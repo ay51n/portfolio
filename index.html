@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ayman Labidi Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #dcdcdc;
+    --ink: #c9300e;
+    --ink-soft: rgba(201, 48, 14, .55);
+    --line: rgba(201, 48, 14, .7);
+    --dark: #1a1513;
+    --pad: clamp(16px, 4.5vw, 72px);
+    --pl: max(var(--pad), env(safe-area-inset-left, 0px));
+    --pr: max(var(--pad), env(safe-area-inset-right, 0px));
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .small {
+    font-size: 11px; font-weight: 800; line-height: 1.15;
+    text-transform: uppercase; letter-spacing: -.01em;
+  }
+  .display {
+    font-weight: 900; text-transform: uppercase;
+    letter-spacing: -.075em; line-height: .8;
+  }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 20;
+    display: flex; justify-content: space-between;
+    padding: calc(18px + env(safe-area-inset-top, 0px)) var(--pr) 18px var(--pl);
+    background: var(--bg);
+  }
+  nav .links { display: flex; gap: 22px; }
+  nav a:hover { opacity: .5; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 90px var(--pr) 28px var(--pl);
+    position: relative;
+  }
+  .hero h1 { font-size: clamp(64px, 17vw, 280px); text-align: center; }
+  .hero h1 span { display: block; }
+  .hero .corners {
+    position: absolute; left: var(--pl); right: var(--pr); bottom: 28px;
+    display: flex; justify-content: space-between; gap: 16px;
+  }
+  .hero .corners div:last-child { text-align: right; }
+  .hero h1 span { opacity: .15; transform: translateY(30px); animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  .hero h1 span:nth-child(2) { animation-delay: .12s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* ---------- index ---------- */
+  section { padding: 0 var(--pr) 0 var(--pl); }
+  .section-head {
+    display: flex; justify-content: space-between; align-items: end;
+    padding: 80px 0 18px;
+  }
+  .index { list-style: none; border-top: 1.5px solid var(--line); }
+  .index li { border-bottom: 1.5px solid var(--line); }
+  .index a {
+    display: grid; grid-template-columns: clamp(120px, 15vw, 230px) minmax(0, 1fr) 240px; align-items: center; gap: 28px;
+    padding: 16px 0;
+  }
+  .index .thumb {
+    width: 100%; max-width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+    background: #cfcfcf; filter: grayscale(1); transition: filter .35s;
+  }
+  .index a:hover .thumb, .index a:focus-visible .thumb { filter: none; }
+  .index .desc { display: grid; gap: 8px; text-transform: none; }
+  .index .desc b { text-transform: uppercase; }
+  .index .desc i { font-style: normal; font-weight: 500; font-size: 13px; line-height: 1.3; }
+  .index .desc u { text-decoration: none; text-transform: uppercase; }
+  .index .title { font-size: clamp(28px, 5vw, 88px); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .index .num { font-weight: 600; letter-spacing: -.04em; }
+    .index a:hover .title { transform: translateX(18px); }
+  .index:hover a:not(:hover) { opacity: .35; }
+  .index a { transition: opacity .25s; }
+
+
+  /* ---------- about / contact ---------- */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    padding-top: 120px; padding-bottom: 120px;
+  }
+  .about p.lead {
+    font-size: clamp(24px, 3.2vw, 46px); font-weight: 800;
+    letter-spacing: -.05em; line-height: 1;
+  }
+  .skills { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; align-content: start; }
+  .skills li { border-bottom: 1px solid var(--line); padding: 10px 0 6px; }
+  footer { padding: 0 var(--pr) 28px var(--pl); }
+  footer .big { font-size: clamp(56px, 13vw, 220px); display: block; padding: 40px 0 30px; border-top: 1.5px solid var(--line); }
+  footer .big:hover { opacity: .6; }
+  footer .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer .row a:hover { opacity: .5; }
+
+  /* ---------- project view ---------- */
+  .project {
+    position: fixed; inset: 0; z-index: 30;
+    background: var(--bg); overflow-y: auto;
+    transform: translateY(100%); transition: transform .6s cubic-bezier(.7,0,.2,1);
+    visibility: hidden;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .project.open { transform: none; visibility: visible; }
+  .project .bar {
+    position: sticky; top: 0; z-index: 2; background: var(--bg);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px var(--pr) 18px var(--pl); border-bottom: 1.5px solid var(--line);
+  }
+  .project .bar button {
+    font: inherit; color: inherit; background: none; border: 0; cursor: pointer;
+  }
+  .project .bar button:hover { opacity: .5; }
+  .p-head { padding: 56px var(--pr) 0 var(--pl); }
+  .p-head h2 { font-size: clamp(48px, 10vw, 170px); }
+  .p-meta {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 48px; padding: 14px 0; border-top: 1.5px solid var(--line); border-bottom: 1.5px solid var(--line);
+  }
+  .p-meta div span { display: block; opacity: .55; margin-bottom: 6px; }
+  .p-body { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 48px 0 56px; }
+  .p-body p { font-size: clamp(20px, 2.2vw, 32px); font-weight: 800; letter-spacing: -.045em; line-height: 1.02; }
+  .p-body ul { list-style: none; }
+  .p-body li { border-bottom: 1px solid var(--line); padding: 10px 0 6px; font-size: 13px; font-weight: 600; text-transform: uppercase; }
+  .slides { padding: 0 var(--pr) 40px var(--pl); display: grid; gap: 16px; }
+  .slides img { width: 100%; height: auto; background: #cfcfcf; }
+  .slides.mixed { grid-template-columns: 2fr 1fr; align-items: start; }
+  .slides.mixed img:first-child { grid-column: 1 / -1; }
+  .p-next { padding: 0 var(--pr) 40px var(--pl); }
+  .p-next a { display: block; border-top: 1.5px solid var(--line); padding-top: 18px; }
+  .p-next .display { font-size: clamp(40px, 8vw, 130px); margin-top: 10px; }
+  .p-next a:hover .display { opacity: .6; }
+  body.locked { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .index a { grid-template-columns: 110px minmax(0, 1fr); gap: 10px 14px; align-items: start; }
+    .index .desc { grid-column: 1 / -1; }
+    .index .thumb { filter: none; }
+    .about, .p-body { grid-template-columns: 1fr; }
+    .p-meta { grid-template-columns: 1fr 1fr; }
+    .slides.mixed { grid-template-columns: 1fr; }
+    nav .links { gap: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .hero h1 span { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="small">
+  <a href="#top">Ayman Labidi</a>
+  <div class="links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <h1 class="display"><span>Ayman</span><span>Labidi</span></h1>
+  <div class="corners small">
+    <div>Marketing &amp; Brand Strategy<br>Portfolio 2026</div>
+    <div>Selected work<br><span id="count"></span> projects</div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="section-head small">
+    <div>(Index)</div>
+    <div>Click a project to see the full deck</div>
+  </div>
+  <ul class="index" id="index"></ul>
+</section>
+
+<section class="about" id="about">
+  <div>
+    <div class="small" style="margin-bottom:20px">(About)</div>
+    <p class="lead">I build brand strategies, campaigns and content systems that turn attention into connection, from luxury houses to city apps and whole destinations.</p>
+  </div>
+  <ul class="skills small">
+    <li>Brand strategy</li><li>Campaign concept</li>
+    <li>Influencer marketing</li><li>CRM &amp; relationship marketing</li>
+    <li>Social media &amp; content</li><li>Destination branding</li>
+    <li>Growth &amp; gamification</li><li>Web &amp; e-commerce design</li>
+  </ul>
+</section>
+
+<footer id="contact">
+  <div class="small" style="margin-bottom:14px">(Contact)</div>
+  <a class="big display" href="mailto:aymanlabidi2@gmail.com">Let's talk</a>
+  <div class="row small">
+    <a href="mailto:aymanlabidi2@gmail.com">aymanlabidi2@gmail.com</a>
+    <a href="https://www.linkedin.com/in/ayman-labidi-a065b3201/" target="_blank" rel="noopener">LinkedIn</a>
+    <span>&copy; 2026 Ayman Labidi</span>
+  </div>
+</footer>
+
+<article class="project" id="project" aria-hidden="true">
+  <div class="bar small">
+    <button id="close">&larr; Index</button>
+    <span id="p-count"></span>
+  </div>
+  <div class="p-head">
+    <div class="small" id="p-kicker"></div>
+    <h2 class="display" id="p-title"></h2>
+    <div class="p-meta small" id="p-meta"></div>
+    <div class="p-body">
+      <p id="p-summary"></p>
+      <ul id="p-points"></ul>
+    </div>
+  </div>
+  <div class="slides" id="p-slides"></div>
+  <div class="p-next"><a id="p-next" href="#"></a></div>
+</article>
+
+<script>
+// Each project: slides are rendered pages from the original deck (assets/<slug>/NN.jpg).
+const range = (slug, from, to) => Array.from({ length: to - from + 1 }, (_, i) => `assets/${slug}/${String(from + i).padStart(2, "0")}.jpg`);
+
+const PROJECTS = [
+  {
+    slug: "parfum",
+    title: "Parfum de la Paix",
+    desc: "Brand awareness campaign for a commemorative fragrance",
+    client: "Maison de Parfum Berry", type: "Integrated campaign", role: "Team project, Labeluna agency", year: "2025",
+    summary: "Where peace becomes a perfume. A launch campaign linking Normandy's D-Day heritage to a fragrance of remembrance, built for international audiences.",
+    points: ["Persona & target audience", "ATL / BTL communication mix", "Launch event & PR", "Email & CRM sequence", "Influencer seeding", "€24.8K budget & 8-month schedule", "Packaging, slogan & film storyboard"],
+    slides: range("parfum", 1, 18)
+  },
+  {
+    slug: "cartier",
+    title: "Cartier",
+    desc: "Influencer-driven relationship marketing",
+    client: "Cartier", type: "Relationship marketing", role: "Strategy", year: "2026",
+    summary: "A six-month relationship marketing campaign that grows engagement by 30% through a tiered nano, micro and macro influencer storytelling system.",
+    points: ["SMART RM goal", "Affluent millennials 25–35", "Nano: 'Fragments of You'", "Micro: 'Moments with Cartier'", "Macro: 'Cartier Evening' with Jeanne Damas", "Contract, ethics & KPIs"],
+    slides: range("cartier", 1, 15)
+  },
+  {
+    slug: "lululemon",
+    title: "Smart Where It Matters", short: "Lululemon",
+    desc: "Influencer campaign for Lululemon",
+    client: "Lululemon", type: "Influencer marketing", role: "Concept & content", year: "2026",
+    summary: "Redefining “smart” in fitness: a micro Pilates influencer and Lululemon put physical stability ahead of digital tracking.",
+    points: ["Influencer identity & positioning", "Brand fit analysis", "Campaign concept", "Instagram & TikTok flow", "Teaser, main content, payoff", "Content scripts & visuals"],
+    slides: range("lululemon", 1, 11)
+  },
+  {
+    slug: "lewalk-drop",
+    title: "Le Walk: Paris After Class", short: "Le Walk Drop",
+    desc: "Scarcity-driven weekly drop strategy",
+    client: "Le Walk", type: "Growth strategy", role: "Solo project", year: "2026",
+    summary: "A zero-budget growth engine: a new themed audio walk drops every Wednesday at 6pm, unlocking a matching Wecandoo workshop for international students in Paris.",
+    points: ["Drop & scarcity mechanics", "Organic reach with zero budget", "Wecandoo partnership", "Gleam.io gamification", "Walk Passport loyalty system", "Flywheel & weekly roadmap"],
+    slides: range("lewalk-drop", 1, 19)
+  },
+  {
+    slug: "lewalk-curation",
+    title: "Le Walk: Content Curation", short: "Le Walk Curation",
+    desc: "Social media curation & paid shoutouts",
+    client: "Le Walk", type: "Social media", role: "Strategy", year: "2026",
+    summary: "A content curation strategy for Le Walk's 157K Instagram audience, with partner page selection, caption formula and a €600 shoutout plan.",
+    points: ["Niche & theme page", "Viral content sourcing", "Caption formula", "Partner account selection", "Budget & expected ROI", "Feasibility & risks"],
+    slides: range("lewalk-curation", 1, 6)
+  },
+  {
+    slug: "tunisia",
+    title: "Tunisia",
+    desc: "Destination brand: heritage & culture trip",
+    client: "Tunisia (destination)", type: "Destination branding", role: "Brand & creative", year: "2026",
+    summary: "Tunisia: More Than You Expect. Repositioning the country from low-cost beach holidays to a compact journey through 3,000 years of civilizations.",
+    points: ["Destination audit & SWOT", "Competitor snapshot", "Personas & positioning", "ALARM framework", "Visual identity & sensory branding", "Brand architecture", "AI tool “My Tunisian Legacy”"],
+    slides: range("tunisia", 1, 33)
+  },
+  {
+    slug: "urban",
+    title: "Urban Fashion",
+    desc: "E-commerce landing page & social ad",
+    client: "Urban Fashion", type: "Web & social design", role: "Design", year: "2026",
+    summary: "L'élégance, nouvelle collection. A responsive landing page and a sponsored Instagram Reel for a new fashion collection.",
+    points: ["Desktop landing page", "Mobile landing page", "Sponsored Instagram Reel", "Black & white with rose accent"],
+    slides: ["assets/urban/desktop.png", "assets/urban/mobile.png", "assets/urban/ig.png"],
+    layout: "mixed"
+  }
+];
+
+const $ = (id) => document.getElementById(id);
+const pad = (n) => `(${n})`;
+$("count").textContent = PROJECTS.length;
+
+// ----- index list -----
+$("index").innerHTML = PROJECTS.map((p, i) => `
+  <li><a href="#${p.slug}" data-cover="${p.slides[0]}">
+    <img class="thumb" src="${p.slides[0]}" alt="" loading="lazy">
+    <span class="title display"><span class="num">${pad(i + 1)}</span> ${p.short || p.title}</span>
+    <span class="desc small"><b>${p.desc}</b><i>${p.summary}</i><u>View project &rarr;</u></span>
+  </a></li>`).join("");
+
+// ----- project view (hash routing) -----
+const view = $("project");
+function render() {
+  const slug = location.hash.slice(1);
+  const i = PROJECTS.findIndex((p) => p.slug === slug);
+  if (i < 0) {
+    view.classList.remove("open"); view.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("locked");
+    return;
+  }
+  const p = PROJECTS[i], next = PROJECTS[(i + 1) % PROJECTS.length];
+  $("p-count").textContent = `${pad(i + 1)} / ${PROJECTS.length}`;
+  $("p-kicker").textContent = `${pad(i + 1)} ${p.desc}`;
+  $("p-title").textContent = p.title;
+  $("p-meta").innerHTML = [["Client", p.client], ["Type", p.type], ["Role", p.role], ["Year", p.year]]
+    .map(([k, v]) => `<div><span>${k}</span>${v}</div>`).join("");
+  $("p-summary").textContent = p.summary;
+  $("p-points").innerHTML = p.points.map((x) => `<li>${x}</li>`).join("");
+  $("p-slides").className = "slides" + (p.layout ? " " + p.layout : "");
+  $("p-slides").innerHTML = p.slides.map((s, n) => `<img src="${s}" alt="${p.title}, slide ${n + 1}" loading="lazy">`).join("");
+  $("p-next").href = `#${next.slug}`;
+  $("p-next").innerHTML = `<span class="small">Next project</span><div class="display">${next.title} &rarr;</div>`;
+  view.scrollTop = 0;
+  view.classList.add("open"); view.setAttribute("aria-hidden", "false");
+  document.body.classList.add("locked");
+}
+$("close").addEventListener("click", () => { location.hash = "work"; render(); });
+addEventListener("keydown", (e) => { if (e.key === "Escape" && view.classList.contains("open")) $("close").click(); });
+addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>
