@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ayman Labidi Portfolio</title>
+<title>Ayman Labidi — Marketing, Strategy &amp; Data Portfolio</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;800;900&display=swap" rel="stylesheet">
-<style>
+<style> 
   :root {
     --bg: #dcdcdc;
     --ink: #c9300e;
-    --ink-soft: rgba(201, 48, 14, .55);
+    --ink-soft: rgba(201, 48, 14, .62);
     --line: rgba(201, 48, 14, .7);
     --dark: #1a1513;
     --pad: clamp(16px, 4.5vw, 72px);
@@ -33,7 +33,7 @@
   img { display: block; max-width: 100%; }
 
   .small {
-    font-size: 11px; font-weight: 800; line-height: 1.15;
+    font-size: 11px; font-weight: 800; line-height: 1.25;
     text-transform: uppercase; letter-spacing: -.01em;
   }
   .display {
@@ -44,7 +44,7 @@
   /* ---------- nav ---------- */
   nav {
     position: fixed; inset: 0 0 auto 0; z-index: 20;
-    display: flex; justify-content: space-between;
+    display: flex; justify-content: space-between; align-items: center;
     padding: calc(18px + env(safe-area-inset-top, 0px)) var(--pr) 18px var(--pl);
     background: var(--bg);
   }
@@ -78,7 +78,7 @@
   .index { list-style: none; border-top: 1.5px solid var(--line); }
   .index li { border-bottom: 1.5px solid var(--line); }
   .index a {
-    display: grid; grid-template-columns: clamp(120px, 15vw, 230px) minmax(0, 1fr) 240px; align-items: center; gap: 28px;
+    display: grid; grid-template-columns: clamp(120px, 15vw, 230px) minmax(0, 1fr) 260px; align-items: center; gap: 28px;
     padding: 16px 0;
   }
   .index .thumb {
@@ -92,22 +92,120 @@
   .index .desc u { text-decoration: none; text-transform: uppercase; }
   .index .title { font-size: clamp(28px, 5vw, 88px); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
   .index .num { font-weight: 600; letter-spacing: -.04em; }
-    .index a:hover .title { transform: translateX(18px); }
+  .index a:hover .title { transform: translateX(18px); }
   .index:hover a:not(:hover) { opacity: .35; }
   .index a { transition: opacity .25s; }
 
+  /* ---------- story / cv narrative ---------- */
+  .story-section {
+    padding-top: 120px;
+    padding-bottom: 100px;
+  }
+  .story-intro {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    padding-bottom: 64px;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .story-intro p.lead {
+    font-size: clamp(24px, 3.1vw, 44px);
+    font-weight: 800;
+    letter-spacing: -.045em;
+    line-height: 1.04;
+  }
+  .story-bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .story-bio p {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.45;
+    max-width: 52ch;
+  }
+  .status-pill {
+    display: inline-block;
+    border: 1.5px solid var(--ink);
+    padding: 8px 12px;
+    width: fit-content;
+  }
 
-  /* ---------- about / contact ---------- */
-  .about {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-    padding-top: 120px; padding-bottom: 120px;
+  /* Timeline chapters */
+  .timeline {
+    list-style: none;
   }
-  .about p.lead {
-    font-size: clamp(24px, 3.2vw, 46px); font-weight: 800;
-    letter-spacing: -.05em; line-height: 1;
+  .chapter {
+    display: grid;
+    grid-template-columns: 180px 1fr 1.2fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-bottom: 1.5px solid var(--line);
+    align-items: start;
   }
-  .skills { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; align-content: start; }
-  .skills li { border-bottom: 1px solid var(--line); padding: 10px 0 6px; }
+  .chapter-year {
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  .chapter-year span {
+    display: block;
+    opacity: .65;
+    margin-top: 4px;
+    font-size: 11px;
+  }
+  .chapter-role h3 {
+    font-size: clamp(20px, 2.2vw, 30px);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+  .chapter-role .org {
+    margin-top: 6px;
+    opacity: .75;
+  }
+  .chapter-detail p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tags span {
+    border: 1px solid var(--line);
+    padding: 3px 8px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  /* Toolkit Grid */
+  .toolkit {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding-top: 56px;
+  }
+  .toolkit h4 {
+    margin-bottom: 14px;
+    opacity: .65;
+  }
+  .toolkit ul {
+    list-style: none;
+  }
+  .toolkit li {
+    border-bottom: 1px solid var(--line);
+    padding: 9px 0 6px;
+  }
+
+  /* ---------- footer ---------- */
   footer { padding: 0 var(--pr) 28px var(--pl); }
   footer .big { font-size: clamp(56px, 13vw, 220px); display: block; padding: 40px 0 30px; border-top: 1.5px solid var(--line); }
   footer .big:hover { opacity: .6; }
@@ -153,11 +251,14 @@
   .p-next a:hover .display { opacity: .6; }
   body.locked { overflow: hidden; }
 
+  @media (max-width: 900px) {
+    .story-intro, .chapter, .toolkit { grid-template-columns: 1fr; gap: 16px; }
+  }
   @media (max-width: 760px) {
     .index a { grid-template-columns: 110px minmax(0, 1fr); gap: 10px 14px; align-items: start; }
     .index .desc { grid-column: 1 / -1; }
     .index .thumb { filter: none; }
-    .about, .p-body { grid-template-columns: 1fr; }
+    .p-body { grid-template-columns: 1fr; }
     .p-meta { grid-template-columns: 1fr 1fr; }
     .slides.mixed { grid-template-columns: 1fr; }
     nav .links { gap: 14px; }
@@ -174,7 +275,7 @@
   <a href="#top">Ayman Labidi</a>
   <div class="links">
     <a href="#work">Work</a>
-    <a href="#about">About</a>
+    <a href="#story">Story &amp; CV</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -182,39 +283,124 @@
 <header class="hero" id="top">
   <h1 class="display"><span>Ayman</span><span>Labidi</span></h1>
   <div class="corners small">
-    <div>Marketing &amp; Brand Strategy<br>Portfolio 2026</div>
-    <div>Selected work<br><span id="count"></span> projects</div>
+    <div>International Marketing &amp; Data<br>Paris, France &middot; Work Auth. Ready</div>
+    <div>Selected Work (<span id="count"></span>)<br>Internship Search: Jan 2027</div>
   </div>
 </header>
 
 <section id="work">
   <div class="section-head small">
-    <div>(Index)</div>
-    <div>Click a project to see the full deck</div>
+    <div>(01 &mdash; Selected Work)</div>
+    <div>Click a project to inspect the full deck</div>
   </div>
   <ul class="index" id="index"></ul>
 </section>
 
-<section class="about" id="about">
-  <div>
-    <div class="small" style="margin-bottom:20px">(About)</div>
-    <p class="lead">I build brand strategies, campaigns and content systems that turn attention into connection, from luxury houses to city apps and whole destinations.</p>
+<section class="story-section" id="story">
+  <div class="small" style="margin-bottom:24px">(02 &mdash; The Story Behind The Work)</div>
+  
+  <div class="story-intro">
+    <p class="lead">Where analytical rigor meets cultural storytelling: turning cohort data and social mechanics into brand growth.</p>
+    <div class="story-bio">
+      <p>My path started in Management Information Systems and data analytics in Tunisia before moving to Paris for an MSc in International Marketing at ESCE. Today, I bridge both worlds—building automated Power BI dashboards and cohort models on one hand, and scripting high-retention TikToks, CRM loops, and brand campaigns on the other.</p>
+      <div class="status-pill small">Seeking: 6-Month Marketing &amp; CRM Internship &middot; Jan 2027</div>
+    </div>
   </div>
-  <ul class="skills small">
-    <li>Brand strategy</li><li>Campaign concept</li>
-    <li>Influencer marketing</li><li>CRM &amp; relationship marketing</li>
-    <li>Social media &amp; content</li><li>Destination branding</li>
-    <li>Growth &amp; gamification</li><li>Web &amp; e-commerce design</li>
+
+  <ul class="timeline">
+    <li class="chapter">
+      <div class="chapter-year">2026 &mdash; Present<span>Paris, France</span></div>
+      <div class="chapter-role">
+        <h3>Content Creator &amp; Community Manager</h3>
+        <div class="org small">Auto-École Car 18</div>
+      </div>
+      <div class="chapter-detail">
+        <p>Designing and executing end-to-end Instagram and TikTok strategies—from scripting and filming to editing and copywriting. Tracking organic engagement, impressions, and follower velocity to iterate content formats in real time.</p>
+        <div class="tags"><span>TikTok &amp; IG</span><span>End-to-End Video</span><span>Organic KPIs</span></div>
+      </div>
+    </li>
+
+    <li class="chapter">
+      <div class="chapter-year">2025 &mdash; 2027<span>Paris, France</span></div>
+      <div class="chapter-role">
+        <h3>MSc International Marketing</h3>
+        <div class="org small">ESCE International Business School</div>
+      </div>
+      <div class="chapter-detail">
+        <p>Specializing in brand strategy, relationship marketing, international go-to-market campaigns, and AI-assisted marketing workflows (Claude LLM), backed by hands-on agility from operational roles at McDonald's, Rose &amp; Crown, and Carrefour.</p>
+        <div class="tags"><span>Brand Strategy</span><span>CRM &amp; Loyalty</span><span>AI Workflows</span></div>
+      </div>
+    </li>
+
+    <li class="chapter">
+      <div class="chapter-year">Feb 2024 &mdash; Feb 2025<span>Tunisia</span></div>
+      <div class="chapter-role">
+        <h3>Data Analyst</h3>
+        <div class="org small">PixiHive</div>
+      </div>
+      <div class="chapter-detail">
+        <p>Monitored product and marketing KPIs across user cohorts, built automated reporting pipelines in Power BI, Advanced Excel, and Google Sheets, and translated retention and competitive benchmarks into executive recommendations.</p>
+        <div class="tags"><span>Power BI</span><span>Cohort Analysis</span><span>Competitive Intel</span></div>
+      </div>
+    </li>
+
+    <li class="chapter">
+      <div class="chapter-year">2021 &mdash; 2024<span>Tunisia</span></div>
+      <div class="chapter-role">
+        <h3>BSc Management Information Systems</h3>
+        <div class="org small">ISG Sousse (Higher Institute of Management)</div>
+      </div>
+      <div class="chapter-detail">
+        <p>Built a technical foundation in business databases, information architecture, and quantitative decision-making—giving every creative campaign a measurable analytical backbone.</p>
+        <div class="tags"><span>Informatique de Gestion</span><span>Data Modeling</span><span>Business Ops</span></div>
+      </div>
+    </li>
   </ul>
+
+  <div class="toolkit small">
+    <div>
+      <h4>Marketing &amp; Analytics</h4>
+      <ul>
+        <li>Cohort Analysis &amp; Retention</li>
+        <li>CRM &amp; Relationship Marketing</li>
+        <li>KPI Reporting &amp; Benchmarking</li>
+        <li>Social Ads (Meta Ads Manager)</li>
+        <li>Audience Segmentation &amp; Briefing</li>
+        <li>AI-Assisted Workflows (Claude LLM)</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Tools &amp; Creative Stack</h4>
+      <ul>
+        <li>Power BI &amp; Automated Dashboards</li>
+        <li>Advanced Excel (Pivots, Lookups)</li>
+        <li>Google Sheets</li>
+        <li>Figma (UI &amp; Landing Pages)</li>
+        <li>CapCut &amp; Short-Form Video</li>
+        <li>Canva &amp; Brand Decks</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Languages &amp; Credentials</h4>
+      <ul>
+        <li>French — Native</li>
+        <li>English — Fluent (TOEIC 850 / 990)</li>
+        <li>Arabic — Native</li>
+        <li>Location — Paris, France</li>
+        <li>Work Auth — France (No Visa Required)</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <footer id="contact">
-  <div class="small" style="margin-bottom:14px">(Contact)</div>
+  <div class="small" style="margin-bottom:14px">(03 &mdash; Contact)</div>
   <a class="big display" href="mailto:aymanlabidi2@gmail.com">Let's talk</a>
   <div class="row small">
     <a href="mailto:aymanlabidi2@gmail.com">aymanlabidi2@gmail.com</a>
-    <a href="https://www.linkedin.com/in/ayman-labidi-a065b3201/" target="_blank" rel="noopener">LinkedIn</a>
-    <span>&copy; 2026 Ayman Labidi</span>
+    <a href="tel:+33759828048">+33 7 59 82 80 48</a>
+    <a href="https://www.linkedin.com/in/ayman-labidi-a065b3201/" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+    <span>Paris, France &middot; &copy; 2026 Ayman Labidi</span>
   </div>
 </footer>
 
@@ -237,7 +423,6 @@
 </article>
 
 <script>
-// Each project: slides are rendered pages from the original deck (assets/<slug>/NN.jpg).
 const range = (slug, from, to) => Array.from({ length: to - from + 1 }, (_, i) => `assets/${slug}/${String(from + i).padStart(2, "0")}.jpg`);
 
 const PROJECTS = [
@@ -254,9 +439,9 @@ const PROJECTS = [
     slug: "cartier",
     title: "Cartier",
     desc: "Influencer-driven relationship marketing",
-    client: "Cartier", type: "Relationship marketing", role: "Strategy", year: "2026",
+    client: "Cartier", type: "Relationship marketing", role: "Strategy & CRM KPIs", year: "2026",
     summary: "A six-month relationship marketing campaign that grows engagement by 30% through a tiered nano, micro and macro influencer storytelling system.",
-    points: ["SMART RM goal", "Affluent millennials 25–35", "Nano: 'Fragments of You'", "Micro: 'Moments with Cartier'", "Macro: 'Cartier Evening' with Jeanne Damas", "Contract, ethics & KPIs"],
+    points: ["SMART RM goal (+30% engagement)", "Affluent millennials 25–35", "Nano: 'Fragments of You'", "Micro: 'Moments with Cartier'", "Macro: 'Cartier Evening' with Jeanne Damas", "Contract, ethics & KPIs"],
     slides: range("cartier", 1, 15)
   },
   {
@@ -271,17 +456,17 @@ const PROJECTS = [
   {
     slug: "lewalk-drop",
     title: "Le Walk: Paris After Class", short: "Le Walk Drop",
-    desc: "Scarcity-driven weekly drop strategy",
-    client: "Le Walk", type: "Growth strategy", role: "Solo project", year: "2026",
+    desc: "Organic zero-budget growth & scarcity drop strategy",
+    client: "Le Walk Mobile App", type: "Organic growth & retention", role: "Solo project", year: "2026",
     summary: "A zero-budget growth engine: a new themed audio walk drops every Wednesday at 6pm, unlocking a matching Wecandoo workshop for international students in Paris.",
-    points: ["Drop & scarcity mechanics", "Organic reach with zero budget", "Wecandoo partnership", "Gleam.io gamification", "Walk Passport loyalty system", "Flywheel & weekly roadmap"],
+    points: ["Editorial calendar & drop mechanics", "Organic social acquisition (zero budget)", "Competitor benchmarking & positioning", "Wecandoo partnership & Gleam.io", "Walk Passport loyalty & engagement KPIs", "Flywheel & weekly roadmap"],
     slides: range("lewalk-drop", 1, 19)
   },
   {
     slug: "lewalk-curation",
     title: "Le Walk: Content Curation", short: "Le Walk Curation",
     desc: "Social media curation & paid shoutouts",
-    client: "Le Walk", type: "Social media", role: "Strategy", year: "2026",
+    client: "Le Walk Mobile App", type: "Social media", role: "Strategy", year: "2026",
     summary: "A content curation strategy for Le Walk's 157K Instagram audience, with partner page selection, caption formula and a €600 shoutout plan.",
     points: ["Niche & theme page", "Viral content sourcing", "Caption formula", "Partner account selection", "Budget & expected ROI", "Feasibility & risks"],
     slides: range("lewalk-curation", 1, 6)
@@ -298,10 +483,10 @@ const PROJECTS = [
   {
     slug: "urban",
     title: "Urban Fashion",
-    desc: "E-commerce landing page & social ad",
-    client: "Urban Fashion", type: "Web & social design", role: "Design", year: "2026",
-    summary: "L'élégance, nouvelle collection. A responsive landing page and a sponsored Instagram Reel for a new fashion collection.",
-    points: ["Desktop landing page", "Mobile landing page", "Sponsored Instagram Reel", "Black & white with rose accent"],
+    desc: "Paid social acquisition, landing page & campaign launch",
+    client: "Urban Fashion", type: "Paid social & web design", role: "Campaign & creative (4-person team)", year: "2026",
+    summary: "L'élégance, nouvelle collection. Defined target audience cohorts on Meta Ads Manager alongside a responsive landing page and sponsored Instagram Reel.",
+    points: ["Audience cohort segmentation (Meta Ads)", "High-converting ad creatives & copy", "Master timeline across 4-person team", "Desktop & mobile landing pages", "Sponsored Instagram Reel"],
     slides: ["assets/urban/desktop.png", "assets/urban/mobile.png", "assets/urban/ig.png"],
     layout: "mixed"
   }
