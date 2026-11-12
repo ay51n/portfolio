@@ -96,16 +96,23 @@
   .index:hover a:not(:hover) { opacity: .35; }
   .index a { transition: opacity .25s; }
 
-  /* ---------- story / cv narrative ---------- */
+  /* ---------- story / experience / education ---------- */
   .story-section {
     padding-top: 120px;
+    padding-bottom: 40px;
+  }
+  .cv-block {
+    padding-top: 84px;
+    padding-bottom: 40px;
+  }
+  .cv-block.last {
     padding-bottom: 100px;
   }
   .story-intro {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 48px;
-    padding-bottom: 64px;
+    padding-bottom: 56px;
     border-bottom: 1.5px solid var(--line);
   }
   .story-intro p.lead {
@@ -126,11 +133,40 @@
     line-height: 1.45;
     max-width: 52ch;
   }
+  .status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
   .status-pill {
     display: inline-block;
     border: 1.5px solid var(--ink);
     padding: 8px 12px;
     width: fit-content;
+  }
+  .cv-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--bg);
+    border: 1.5px solid var(--ink);
+    padding: 8px 14px;
+    transition: background .25s, color .25s;
+  }
+  .cv-btn:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .block-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding-bottom: 16px;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .block-head h2 {
+    font-size: clamp(32px, 5.5vw, 84px);
   }
 
   /* Timeline chapters */
@@ -253,6 +289,7 @@
 
   @media (max-width: 900px) {
     .story-intro, .chapter, .toolkit { grid-template-columns: 1fr; gap: 16px; }
+    .block-head { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
   @media (max-width: 760px) {
     .index a { grid-template-columns: 110px minmax(0, 1fr); gap: 10px 14px; align-items: start; }
@@ -261,7 +298,7 @@
     .p-body { grid-template-columns: 1fr; }
     .p-meta { grid-template-columns: 1fr 1fr; }
     .slides.mixed { grid-template-columns: 1fr; }
-    nav .links { gap: 14px; }
+    nav .links { gap: 12px; font-size: 10px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -275,7 +312,8 @@
   <a href="#top">Ayman Labidi</a>
   <div class="links">
     <a href="#work">Work</a>
-    <a href="#story">Story &amp; CV</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -296,15 +334,27 @@
   <ul class="index" id="index"></ul>
 </section>
 
+<!-- PART 02: STORY & POSITIONING -->
 <section class="story-section" id="story">
-  <div class="small" style="margin-bottom:24px">(02 &mdash; The Story Behind The Work)</div>
+  <div class="small" style="margin-bottom:24px">(02 &mdash; Profile &amp; Narrative)</div>
   
   <div class="story-intro">
     <p class="lead">Where analytical rigor meets cultural storytelling: turning cohort data and social mechanics into brand growth.</p>
     <div class="story-bio">
       <p>My path started in Management Information Systems and data analytics in Tunisia before moving to Paris for an MSc in International Marketing at ESCE. Today, I bridge both worlds—building automated Power BI dashboards and cohort models on one hand, and scripting high-retention TikToks, CRM loops, and brand campaigns on the other.</p>
-      <div class="status-pill small">Seeking: 6-Month Marketing &amp; CRM Internship &middot; Jan 2027</div>
+      <div class="status-row">
+        <div class="status-pill small">Seeking: 6-Month Marketing &amp; CRM Internship &middot; Jan 2027</div>
+        <a class="cv-btn small" href="assets/Ayman_Labidi_CV_EN.pdf" target="_blank" rel="noopener">Download CV (PDF) &darr;</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- PART 03: EXPERIENCE ALONE -->
+<section class="cv-block" id="experience">
+  <div class="block-head">
+    <h2 class="display">Experience</h2>
+    <span class="small">(03 &mdash; Professional Track)</span>
   </div>
 
   <ul class="timeline">
@@ -315,20 +365,8 @@
         <div class="org small">Auto-École Car 18</div>
       </div>
       <div class="chapter-detail">
-        <p>Designing and executing end-to-end Instagram and TikTok strategies—from scripting and filming to editing and copywriting. Tracking organic engagement, impressions, and follower velocity to iterate content formats in real time.</p>
+        <p>Designing and executing end-to-end Instagram and TikTok strategies—from scripting and filming to editing and copywriting. Coordinating with internal stakeholders and tracking organic engagement, impressions, and follower growth to refine content iterations.</p>
         <div class="tags"><span>TikTok &amp; IG</span><span>End-to-End Video</span><span>Organic KPIs</span></div>
-      </div>
-    </li>
-
-    <li class="chapter">
-      <div class="chapter-year">2025 &mdash; 2027<span>Paris, France</span></div>
-      <div class="chapter-role">
-        <h3>MSc International Marketing</h3>
-        <div class="org small">ESCE International Business School</div>
-      </div>
-      <div class="chapter-detail">
-        <p>Specializing in brand strategy, relationship marketing, international go-to-market campaigns, and AI-assisted marketing workflows (Claude LLM), backed by hands-on agility from operational roles at McDonald's, Rose &amp; Crown, and Carrefour.</p>
-        <div class="tags"><span>Brand Strategy</span><span>CRM &amp; Loyalty</span><span>AI Workflows</span></div>
       </div>
     </li>
 
@@ -339,20 +377,54 @@
         <div class="org small">PixiHive</div>
       </div>
       <div class="chapter-detail">
-        <p>Monitored product and marketing KPIs across user cohorts, built automated reporting pipelines in Power BI, Advanced Excel, and Google Sheets, and translated retention and competitive benchmarks into executive recommendations.</p>
+        <p>Monitored product and marketing KPIs across user cohorts, built automated reporting pipelines in Power BI, Advanced Excel, and Google Sheets, and synthesized user retention and competitive benchmarks into strategic recommendations for senior management.</p>
         <div class="tags"><span>Power BI</span><span>Cohort Analysis</span><span>Competitive Intel</span></div>
+      </div>
+    </li>
+
+    <li class="chapter">
+      <div class="chapter-year">2023 &mdash; 2025<span>France &amp; Tunisia</span></div>
+      <div class="chapter-role">
+        <h3>Operational &amp; Customer Roles</h3>
+        <div class="org small">McDonald's (2025) &middot; Rose &amp; Crown (2024) &middot; Carrefour (2023)</div>
+      </div>
+      <div class="chapter-detail">
+        <p>Fast-paced frontline execution across hospitality and retail operations—developing service agility, cross-cultural teamwork, and high-volume operational discipline alongside academic studies.</p>
+        <div class="tags"><span>Team Member</span><span>Hospitality</span><span>Retail Ops</span></div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- PART 04: ACADEMIC BACKGROUND (PARCOURS SCOLAIRE) ALONE -->
+<section class="cv-block last" id="education">
+  <div class="block-head">
+    <h2 class="display">Education</h2>
+    <span class="small">(04 &mdash; Academic Background)</span>
+  </div>
+
+  <ul class="timeline">
+    <li class="chapter">
+      <div class="chapter-year">2025 &mdash; 2027<span>Paris, France</span></div>
+      <div class="chapter-role">
+        <h3>Master of Science (MSc) in International Marketing</h3>
+        <div class="org small">ESCE International Business School</div>
+      </div>
+      <div class="chapter-detail">
+        <p>Specializing in international brand strategy, CRM and relationship marketing, omnichannel campaign planning, and AI-assisted marketing workflows (Claude LLM).</p>
+        <div class="tags"><span>Brand Strategy</span><span>CRM &amp; Loyalty</span><span>AI Workflows</span></div>
       </div>
     </li>
 
     <li class="chapter">
       <div class="chapter-year">2021 &mdash; 2024<span>Tunisia</span></div>
       <div class="chapter-role">
-        <h3>BSc Management Information Systems</h3>
+        <h3>Bachelor's Degree in Management Information Systems</h3>
         <div class="org small">ISG Sousse (Higher Institute of Management)</div>
       </div>
       <div class="chapter-detail">
-        <p>Built a technical foundation in business databases, information architecture, and quantitative decision-making—giving every creative campaign a measurable analytical backbone.</p>
-        <div class="tags"><span>Informatique de Gestion</span><span>Data Modeling</span><span>Business Ops</span></div>
+        <p>Informatique de Gestion — Built a technical foundation in business databases, information systems architecture, and quantitative decision-making, giving every marketing campaign a measurable analytical backbone.</p>
+        <div class="tags"><span>Informatique de Gestion</span><span>Data Modeling</span><span>Business Analytics</span></div>
       </div>
     </li>
   </ul>
@@ -394,7 +466,7 @@
 </section>
 
 <footer id="contact">
-  <div class="small" style="margin-bottom:14px">(03 &mdash; Contact)</div>
+  <div class="small" style="margin-bottom:14px">(05 &mdash; Contact)</div>
   <a class="big display" href="mailto:aymanlabidi2@gmail.com">Let's talk</a>
   <div class="row small">
     <a href="mailto:aymanlabidi2@gmail.com">aymanlabidi2@gmail.com</a>
